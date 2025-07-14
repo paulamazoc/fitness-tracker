@@ -1,9 +1,9 @@
 import './App.css'
-import { Example } from '@/components/Example';
+import { AppRouter } from '@/router';
 
 function App() {
   return (
-    <Example />
+    <AppRouter />
   )
 }
 
