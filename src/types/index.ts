@@ -9,3 +9,7 @@ export interface Exercise {
 export type ExerciseCardProps = {
   exercise: Exercise
 };
+
+export type ExerciseListProps = {
+  exercises: Exercise[]
+};
