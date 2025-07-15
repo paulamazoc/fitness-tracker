@@ -1,4 +1,5 @@
 import type { Exercise, ExerciseContextType } from "@/types";
+import { EXERCISES_LOCAL_STORAGE_KEY } from "@/utils/constants";
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 
 const ExerciseContext = createContext<ExerciseContextType | undefined>(undefined);
@@ -13,7 +14,7 @@ export const ExerciseProvider = ({ children }: { children: ReactNode }) => {
     const [exercises, setExercises] = useState<Exercise[]>([]);
 
     useEffect(() => {
-        const data = localStorage.getItem('fitnessTracker.exercises');
+        const data = localStorage.getItem(EXERCISES_LOCAL_STORAGE_KEY);
         if (data) {
             try {
                 setExercises(JSON.parse(data));

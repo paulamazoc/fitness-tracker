@@ -6,3 +6,5 @@ export const QUOTES = [
   "Every rep counts.",
   "Don't finish when you are tired, finish when you are done!",
 ];
+
+export const EXERCISES_LOCAL_STORAGE_KEY = "fitnessTracker.exercises";

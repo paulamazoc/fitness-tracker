@@ -1,13 +1,11 @@
 import { ExerciseForm } from "@/components/ExerciseForm";
 import { ExerciseList } from "@/components/ExerciseList";
 import { QuoteGenerator } from "@/components/QuoteGenerator";
-import type { Exercise } from "@/types";
-import { mockExercises } from "@/utils/mocks";
 import { Box } from "@mui/material";
-import { useState } from "react";
+import { useExercise } from '@/providers/Exercise'
 
 export const Dashboard = () => {
-    const [exercises, _setExercises] = useState<Exercise[]>(mockExercises);
+    const { exercises } = useExercise();
     return (
         <Box
             display="flex"
