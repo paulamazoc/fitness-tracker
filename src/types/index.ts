@@ -16,4 +16,5 @@ export type ExerciseListProps = {
 
 export type ExerciseContextType = {
   exercises: Exercise[]
+  addExercise: (name: string, sets: number) => void
 };

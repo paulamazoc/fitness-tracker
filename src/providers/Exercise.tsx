@@ -1,6 +1,7 @@
 import type { Exercise, ExerciseContextType } from "@/types";
 import { EXERCISES_LOCAL_STORAGE_KEY } from "@/utils/constants";
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { v4 } from 'uuid';
 
 const ExerciseContext = createContext<ExerciseContextType | undefined>(undefined);
 
@@ -24,8 +25,23 @@ export const ExerciseProvider = ({ children }: { children: ReactNode }) => {
         };
     }, []);
 
+    useEffect(() => {
+        localStorage.setItem(EXERCISES_LOCAL_STORAGE_KEY, JSON.stringify(exercises));
+    }, [exercises]);
+
+    const addExercise = (name: string, sets: number) => {
+        const newExercise: Exercise = {
+            id: v4(),
+            name,
+            sets,
+            completedSets: 0,
+            isDone: false,
+        };
+        setExercises((prev) => [newExercise, ...prev]);
+    };
+
     return (
-        <ExerciseContext.Provider value={{ exercises }}>
+        <ExerciseContext.Provider value={{ exercises, addExercise }}>
             {children}
         </ExerciseContext.Provider>
     );
