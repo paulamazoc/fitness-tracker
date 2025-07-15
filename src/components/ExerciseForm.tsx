@@ -1,12 +1,12 @@
+import { useExerciseForm } from "@/hooks/useExerciseForm";
 import { Box, Button, TextField } from "@mui/material";
-import { useState } from "react";
 
 export const ExerciseForm = () => {
-  const [name, setName] = useState("");
-  const [sets, setSets] = useState(0);
+  const { handleSetsOnChange, handleSubmit, name, setName, sets } = useExerciseForm();
   return (
     <Box
       component="form"
+      onSubmit={handleSubmit}
       display="flex"
       alignItems="flex-start"
       position="sticky"
@@ -27,8 +27,9 @@ export const ExerciseForm = () => {
       />
       <TextField
         label="Sets"
+        type="number"
         value={sets}
-        onChange={(e) => setSets(Number(e.target.value))}
+        onChange={handleSetsOnChange}
         size="small"
         fullWidth
         required
