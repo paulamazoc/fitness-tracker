@@ -1,6 +1,13 @@
+import { QUOTES } from "@/utils/constants";
 import { Box, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
 
 export const QuoteGenerator = () => {
+  const [index, setIndex] = useState(0);
+  useEffect(() => {
+    setIndex(Math.floor(Math.random() * QUOTES.length));
+  }, []);
+
   return (
     <Box
       display="flex"
@@ -10,7 +17,7 @@ export const QuoteGenerator = () => {
       mb={4}
     >
       <Typography variant="body1" sx={{ fontStyle: 'italic' }}>
-        “No pain, no gain.”
+        “{QUOTES[index]}”
       </Typography>
     </Box>
   )
