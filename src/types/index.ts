@@ -13,3 +13,7 @@ export type ExerciseCardProps = {
 export type ExerciseListProps = {
   exercises: Exercise[]
 };
+
+export type ExerciseContextType = {
+  exercises: Exercise[]
+};
