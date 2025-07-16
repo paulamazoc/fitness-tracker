@@ -1,5 +1,5 @@
 import { Box, Stack, Typography } from "@mui/material";
-import { ExerciseCard } from "./ExerciseCard";
+import { ExerciseCard } from "../ExerciseCard/ExerciseCard";
 import type { ExerciseListProps } from "@/types";
 import { useExercise } from "@/providers/Exercise";
 import { useCallback, useMemo } from "react";

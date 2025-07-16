@@ -1,3 +1,5 @@
+import type { ExerciseCardVariant } from "@/components/ExerciseCard/strategyMap";
+
 export interface Exercise {
     id: string;
     name: string;
@@ -5,8 +7,6 @@ export interface Exercise {
     completedSets: number;
     isDone: boolean;
 }
-
-type ExerciseCardVariant = 'uncompleted' | 'done';
 
 export type ExerciseCardProps = {
   exercise: Exercise

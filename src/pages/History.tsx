@@ -1,6 +1,6 @@
-import { ExerciseCard } from "@/components/ExerciseCard";
+import { ExerciseCard } from "@/components/ExerciseCard/ExerciseCard";
 import { useExercise } from "@/providers/Exercise";
-import { Box, Button, List, ListItem, ListItemText, Typography } from "@mui/material";
+import { Box, Button, List, ListItem, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 export const History = () => {

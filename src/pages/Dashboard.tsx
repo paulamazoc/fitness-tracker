@@ -1,6 +1,6 @@
-import { ExerciseForm } from "@/components/ExerciseForm";
-import { ExerciseList } from "@/components/ExerciseList";
-import { QuoteGenerator } from "@/components/QuoteGenerator";
+import { ExerciseForm } from "@/components/ExerciseForm/ExerciseForm";
+import { ExerciseList } from "@/components/ExerciseList/ExerciseList";
+import { QuoteGenerator } from "@/components/QuoteGenerator/QuoteGenerator";
 import { Box, Button, Typography } from "@mui/material";
 import { useExercise } from '@/providers/Exercise'
 import { useNavigate } from "react-router-dom";

@@ -1,24 +1,11 @@
 import type { ExerciseCardProps } from "@/types";
 import { Box, Button, Card, CardContent, Checkbox, Chip, Stack, Typography } from "@mui/material";
 import { memo } from "react";
-
-const strategyMap = {
-  uncompleted: {
-    showProgressBar: true,
-    showActions: true,
-    cardBg: '#1e1e1e',
-  },
-  done: {
-    showProgressBar: false,
-    showActions: false,
-    cardBg: '#2a2a2a',
-  },
-} as const;
+import { exerciseCardStrategyMap } from "./strategyMap";
 
 export const ExerciseCard = memo(({ exercise, onCheckDone, onCompleteSet, variant = 'uncompleted' }: ExerciseCardProps) => {
   const { id, name, sets, completedSets, isDone } = exercise;
-  const strategy = strategyMap[variant];
-
+  const strategy = exerciseCardStrategyMap[variant];
   return (
     <Card variant="outlined" sx={{ bgcolor: strategy.cardBg }}>
       <CardContent>
