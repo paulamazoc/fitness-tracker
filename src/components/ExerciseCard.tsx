@@ -1,58 +1,70 @@
 import type { ExerciseCardProps } from "@/types";
-import { Box, Button, Card, CardContent, Checkbox, Stack, Typography } from "@mui/material";
+import { Box, Button, Card, CardContent, Checkbox, Chip, Stack, Typography } from "@mui/material";
 import { memo } from "react";
 
-export const ExerciseCard = memo(({ exercise, onCheckDone, onCompleteSet }: ExerciseCardProps) => {
+const strategyMap = {
+  uncompleted: {
+    showProgressBar: true,
+    showActions: true,
+    cardBg: '#1e1e1e',
+  },
+  done: {
+    showProgressBar: false,
+    showActions: false,
+    cardBg: '#2a2a2a',
+  },
+} as const;
+
+export const ExerciseCard = memo(({ exercise, onCheckDone, onCompleteSet, variant = 'uncompleted' }: ExerciseCardProps) => {
   const { id, name, sets, completedSets, isDone } = exercise;
-  const handleCheckDone = () => {
-    onCheckDone(id);
-  };
-  const handleCompleteSet  = () => {
-    if (completedSets < sets) {
-      onCompleteSet(exercise.id)
-    }
-  };
+  const strategy = strategyMap[variant];
 
   return (
-    <Card variant="outlined" sx={{ bgcolor: '#1e1e1e'}}>
+    <Card variant="outlined" sx={{ bgcolor: strategy.cardBg }}>
       <CardContent>
         <Stack spacing={1}>
-          <Typography variant="h6">{name}</Typography>
+          <Typography variant="h6">{name} {variant === "done" && <Chip size="small" label="DONE" sx={{ ml: 2 }} />}</Typography>
           <Typography variant="body2" color="text.secondary">
             {completedSets} of {sets} sets done
           </Typography>
-          <Box display="flex" gap={1} sx={{ cursor: 'pointer' }} pb={1}>
-            {Array.from({ length: sets }).map((_, i) => (
-              <Box
-                key={i}
-                sx={{
-                  height: 10,
-                  flex: 1,
-                  borderRadius: 1,
-                  backgroundColor: i < completedSets ? 'success.main' : '#444',
-                }}
-              />
-            ))}
-          </Box>
-          <Box display="flex" alignItems="center" justifyContent="space-between">
-            <Button
-              variant="contained"
-              onClick={handleCompleteSet}
-              size="small"
-              sx={{ mr: 2 }}
-            >
-              + Complete a set
-            </Button>
-            <Box display="flex" alignItems="center">
-              <Checkbox
-                checked={isDone}
-                color="default"
-                size="small"
-                onChange={handleCheckDone}
-              />
-              <Typography variant="body2">Mark as done</Typography>
+          {strategy.showProgressBar && (
+            <Box display="flex" gap={1} sx={{ cursor: 'pointer' }} pb={1}>
+              {Array.from({ length: sets }).map((_, i) => (
+                <Box
+                  key={i}
+                  sx={{
+                    height: 10,
+                    flex: 1,
+                    borderRadius: 1,
+                    backgroundColor: i < completedSets ? 'success.main' : '#444',
+                  }}
+                />
+              ))}
             </Box>
-          </Box>
+          )}
+          {strategy.showActions && (
+            <Box display="flex" alignItems="center" justifyContent="space-between">
+              <Button
+                variant="contained"
+                onClick={() => {
+                  if (completedSets < sets) onCompleteSet?.(id);
+                }}
+                size="small"
+                sx={{ mr: 2 }}
+              >
+                + Complete a set
+              </Button>
+              <Box display="flex" alignItems="center">
+                <Checkbox
+                  checked={isDone}
+                  color="default"
+                  size="small"
+                  onChange={() => onCheckDone?.(id)}
+                />
+                <Typography variant="body2">Mark as done</Typography>
+              </Box>
+            </Box>
+          )}
         </Stack>
       </CardContent>
     </Card>

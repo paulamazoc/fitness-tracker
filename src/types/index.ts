@@ -6,10 +6,13 @@ export interface Exercise {
     isDone: boolean;
 }
 
+type ExerciseCardVariant = 'uncompleted' | 'done';
+
 export type ExerciseCardProps = {
   exercise: Exercise
-  onCheckDone: (id: string) => void
-  onCompleteSet: (id: string) => void
+  onCheckDone?: (id: string) => void
+  onCompleteSet?: (id: string) => void
+  variant?: ExerciseCardVariant;
 };
 
 export type ExerciseListProps = {
