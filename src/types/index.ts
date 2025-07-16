@@ -9,6 +9,7 @@ export interface Exercise {
 export type ExerciseCardProps = {
   exercise: Exercise
   onCheckDone: (id: string) => void
+  onCompleteSet: (id: string) => void
 };
 
 export type ExerciseListProps = {
@@ -19,4 +20,5 @@ export type ExerciseContextType = {
   exercises: Exercise[]
   addExercise: (name: string, sets: number) => void
   checkDone: (id: string) => void
+  completeSet: (id: string) => void
 };

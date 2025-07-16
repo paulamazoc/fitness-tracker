@@ -5,7 +5,7 @@ import { useExercise } from "@/providers/Exercise";
 import { useCallback, useMemo } from "react";
 
 export const ExerciseList = ({ exercises }: ExerciseListProps) => {
-  const { checkDone } = useExercise();
+  const { checkDone, completeSet } = useExercise();
   const exercisesInProgress = useMemo(
     () => exercises.filter((exercise) => !exercise.isDone),
     [exercises]
@@ -14,6 +14,11 @@ export const ExerciseList = ({ exercises }: ExerciseListProps) => {
   const handleCheckDone = useCallback(
     (id: string) => checkDone(id),
     [checkDone]
+  );
+
+  const handleCompleteSet = useCallback(
+    (id: string) => completeSet(id),
+    [completeSet]
   );
 
   if (exercisesInProgress.length === 0) return <Typography variant="h6">No exercises added yet.</Typography>;
@@ -25,6 +30,7 @@ export const ExerciseList = ({ exercises }: ExerciseListProps) => {
             key={exercise.id}
             exercise={exercise}
             onCheckDone={() => handleCheckDone(exercise.id)}
+            onCompleteSet={() => handleCompleteSet(exercise.id)}
           />
         ))}
       </Stack>
