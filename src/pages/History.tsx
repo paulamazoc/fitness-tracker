@@ -1,11 +1,22 @@
 import { useExercise } from "@/providers/Exercise";
-import { Container, List, ListItem, ListItemText, Typography } from "@mui/material";
+import { Box, Button, List, ListItem, ListItemText, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export const History = () => {
+    const navigate = useNavigate();
     const { exercises } = useExercise();
     const completedExercises = exercises.filter((exercise) => exercise.isDone);
     return (
-        <Container maxWidth="md" sx={{ pt: 4 }}>
+        <Box
+            display="flex"
+            flexDirection="column"
+            minHeight="100vh"
+        >
+            <Box position="absolute" top={24} right={16}>
+                <Button variant="text" size="small" onClick={() => navigate('/')}>
+                    ⟵ Go to Dashboard
+                </Button>
+            </Box>
             <Typography variant="h4" mb={4}>
                 History
             </Typography>
@@ -24,6 +35,6 @@ export const History = () => {
                 </List>                   
             )
             }
-        </Container>
+        </Box>
     );
 };

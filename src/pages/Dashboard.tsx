@@ -12,7 +12,7 @@ export const Dashboard = () => {
         <Box
             display="flex"
             flexDirection="column"
-            minHeight="100vh"  
+            minHeight="100vh"
         >
             <Box position="absolute" top={24} right={16}>
                 <Button variant="text" size="small" onClick={() => navigate('/history')}>
