@@ -9,12 +9,10 @@ export const ExerciseForm = () => {
       onSubmit={handleSubmit}
       display="flex"
       alignItems="flex-start"
-      position="sticky"
       py={1}
-      px={2}
-      gap={2}
+      px={1}
+      gap={1}
       mb={4}
-      zIndex={2}
     >
       <TextField
         label="Exercise name"

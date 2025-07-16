@@ -11,9 +11,7 @@ export const QuoteGenerator = () => {
   return (
     <Box
       display="flex"
-      flexDirection="column"
-      textAlign="center"
-      position="sticky"
+      justifyContent="center"
       mb={4}
     >
       <Typography variant="body1" sx={{ fontStyle: 'italic' }}>
