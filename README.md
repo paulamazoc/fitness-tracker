@@ -2,6 +2,9 @@
 
 App to keep track of your workouts! 💪
 
+Published with Vercel.
+This project will be temporarily deployed and available at [this link](https://fitness-tracker-phi-ruddy.vercel.app/).
+
 ## Features developed
 - Dashboard page to add and track exercises
 - Each exercise can be marked as done
