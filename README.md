@@ -2,8 +2,15 @@
 
 App to keep track of your workouts! 💪
 
-## Features
-WIP
+## Features developed
+- Dashboard page to add and track exercises
+- Each exercise can be marked as done
+- Each exercise has a progress bar of sets, and a button to increase that progress
+- Form to add new exercises
+- Motivational rotating quote component (in Dashboard page)
+- History page to see completed exercises
+- localStorage is used for simplicity to simulate persistent storage
+- Basic use cases tested with Vitest
 
 ## Tech stack
 
