@@ -40,8 +40,14 @@ export const ExerciseProvider = ({ children }: { children: ReactNode }) => {
         setExercises((prev) => [newExercise, ...prev]);
     };
 
+    const checkDone = (id: string) => {
+        setExercises((prev) =>
+            prev.map((exercise) => (exercise.id === id ? {...exercise, isDone: !exercise.isDone} : exercise))
+        );
+    }
+
     return (
-        <ExerciseContext.Provider value={{ exercises, addExercise }}>
+        <ExerciseContext.Provider value={{ exercises, addExercise, checkDone }}>
             {children}
         </ExerciseContext.Provider>
     );

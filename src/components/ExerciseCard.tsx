@@ -1,8 +1,13 @@
 import type { ExerciseCardProps } from "@/types";
 import { Box, Card, CardContent, Checkbox, Stack, Typography } from "@mui/material";
+import { memo } from "react";
 
-export const ExerciseCard = ({ exercise }: ExerciseCardProps) => {
-  const { name, sets, completedSets, isDone } = exercise;
+export const ExerciseCard = memo(({ exercise, onCheckDone }: ExerciseCardProps) => {
+  const { id, name, sets, completedSets, isDone } = exercise;
+  const handleCheckDone = () => {
+    onCheckDone(id);
+  };
+
   return (
     <Card variant="outlined" sx={{ bgcolor: '#1e1e1e'}}>
       <CardContent>
@@ -29,6 +34,7 @@ export const ExerciseCard = ({ exercise }: ExerciseCardProps) => {
               checked={isDone}
               color="default"
               size="small"
+              onChange={handleCheckDone}
             />
             <Typography variant="body2">Mark as done</Typography>
           </Box>
@@ -36,4 +42,4 @@ export const ExerciseCard = ({ exercise }: ExerciseCardProps) => {
       </CardContent>
     </Card>
   )
-};
+});
