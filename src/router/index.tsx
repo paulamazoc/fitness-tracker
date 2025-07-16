@@ -1,8 +1,8 @@
 import { Dashboard } from "@/pages/Dashboard";
 import { History } from "@/pages/History";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
     {
         path: '/',
         element: <Dashboard />,
